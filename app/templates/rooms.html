@@ -34,4 +34,10 @@
         <br/>
         - {{ message.content }}
     </div>
+
+    <div class="chat-message-newMessage" ng-show="currentRoom">
+        <!-- push a new message onto the array -->
+        {{ currentUser }}: <input ng-model="newMessage" />
+        <button class="btn btn-primary" type="button" ng-click="sendMessage(currentRoom)">Send Message</button>
+    </div>
 </div>
