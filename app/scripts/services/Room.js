@@ -1,11 +1,18 @@
-((function() {
+(function() {
     function Room($firebaseArray) {
         var firebaseRef = new Firebase("https://bloc-chat-ea0c9.firebaseio.com/");
 
         var rooms = $firebaseArray(firebaseRef.child('rooms'));
 
+        var getMessages = function(roomId) {
+            var messages = firebaseRef.child('messages');
+
+            return $firebaseArray(messages.orderByChild("roomId").equalTo(roomId));
+        }
+
         return {
-            rooms
+            rooms,
+            getMessages
         };
     }
 
